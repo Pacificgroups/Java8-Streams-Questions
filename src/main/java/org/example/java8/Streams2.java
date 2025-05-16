@@ -3,10 +3,8 @@ package org.example.java8;
 import org.example.entity.Employee;
 import org.example.entity.Person;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Streams2 {
@@ -63,10 +61,14 @@ public class Streams2 {
                 .sorted(Comparator.reverseOrder())
                 .skip(k-1)
                 .findFirst();
+        System.out.println(ans2);
 
-
-
-
+        //Given a list of strings, find the frequency of each word using Java streams:
+        List<String> words = Arrays.asList("apple", "banana", "apple", "cherry",
+                "banana", "apple");
+        Map<String, Long> wordFrequency =words.stream()
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+        System.out.println(wordFrequency);
 
 
     }
